@@ -1,16 +1,13 @@
-import { useEffect  } from 'react'
+import InfiniteScroll from 'react-infinite-scroller'
 
 import { useStore } from 'components/Home/store'
 
 export const Home = () => {
-  const { fetchPokemon, pokemonList } = useStore(state => ({
+  const { fetchPokemon, pokemonList, url } = useStore(state => ({
     pokemonList: state.pokemonList,
-    fetchPokemon: state.fetchPokemon
+    fetchPokemon: state.fetchPokemon,
+    url: state.url
   }))
-
-  useEffect(() => {
-    fetchPokemon()
-  }, [])
 
   return (
     <>
@@ -18,9 +15,20 @@ export const Home = () => {
       Pokédex
     </h1>
     <div>
-      {pokemonList.map(pokemon => (
-        <h1>{pokemon.name}</h1>
-      ))}
+      <InfiniteScroll
+        pageStart={0}
+        loadMore={() => {
+          fetchPokemon(url)
+        }}
+        hasMore={url !== null}
+        loader={<div className="loader" key={0}>Loading ...</div>}
+      >
+        {
+          pokemonList.map(pokemon => (
+            <h1>{pokemon.name}</h1>
+          ))
+        }
+      </InfiniteScroll>
     </div>
     </>
   )
