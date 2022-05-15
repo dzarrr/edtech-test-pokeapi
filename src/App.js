@@ -10,7 +10,9 @@ import { Home } from './components/Home'
 
 export default function App() {
   return (
-    <Router>
+    <Router
+      basename='/edtech-test-pokeapi'
+    >
       <div>
         <nav>
           <ul>
