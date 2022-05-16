@@ -48,7 +48,7 @@ export const Home = () => {
             {
               pokemonList.map((pokemon, key) => (
                 <ListItem key={key}>
-                  <Link to="/bookmark">
+                  <Link to={`detail/${pokemon.name}`}>
                     <h4>
                     {pokemon.name}
                     </h4>
