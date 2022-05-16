@@ -6,7 +6,9 @@ import {
   Link
 } from 'react-router-dom'
 
-import { Home } from './components/Home'
+import { Home } from 'components/Home'
+
+import 'assets/styles/main.scss'
 
 export default function App() {
   return (
@@ -23,8 +25,7 @@ export default function App() {
         </nav>
 
         <Routes>
-          <Route path="/" element={<Home/>}>
-          </Route>
+          <Route path="/" element={<Home/>}/>
         </Routes>
       </div>
     </Router>
