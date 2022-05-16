@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import Header from 'components/global/Header'
 import ListItem  from 'components/global/ListItem'
+import Toast from 'components/global/Toast'
 import { useStore } from 'components/Home/store'
 
 export const Home = () => {
@@ -27,15 +28,14 @@ export const Home = () => {
         <Header>
           Pokédex
         </Header>
-        {
-          isOffline &&
-            <div>
-              Anda terdeteksi offline
-              <Link to="/bookmark">
-                Load halaman bookmark
-              </Link>
-            </div>
-        }
+        <Toast active={isOffline}>
+          <div>
+            Anda terdeteksi offline
+            <Link to="/bookmark">
+              Load halaman bookmark
+            </Link>
+          </div>
+        </Toast>
         <div className='content'>
           <InfiniteScroll
             pageStart={0}

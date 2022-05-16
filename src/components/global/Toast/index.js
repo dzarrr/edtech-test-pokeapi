@@ -9,3 +9,5 @@ const Toast = (props) => {
     </div>
   )
 }
+
+export default Toast

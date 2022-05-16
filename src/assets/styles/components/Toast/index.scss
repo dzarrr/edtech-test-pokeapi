@@ -1,0 +1,8 @@
+.toast {
+  display: none;
+  &.active {
+    display: block;
+    position: fixed;
+    bottom: 5em;
+  }
+}
