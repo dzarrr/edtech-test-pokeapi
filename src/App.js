@@ -3,10 +3,10 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Link
 } from 'react-router-dom'
 
 import { Home } from 'components/Home'
+import { Bookmark } from 'components/Bookmark'
 
 import 'assets/styles/main.scss'
 
@@ -15,19 +15,10 @@ export default function App() {
     <Router
       basename='/edtech-test-pokeapi'
     >
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/bookmark" element={<Bookmark/>}/>
+      </Routes>
     </Router>
   )
 }

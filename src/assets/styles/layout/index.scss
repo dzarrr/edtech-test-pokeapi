@@ -1,0 +1,13 @@
+@import './main/index.scss';
+
+
+html {
+  font-family: sans-serif;
+  #root{
+    background-color: $color-light-gray;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+}

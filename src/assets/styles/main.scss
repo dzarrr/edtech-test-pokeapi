@@ -1,3 +1,6 @@
-div {
-  background-color: pink;
-}
+@import './abstracts';
+
+@import './components/';
+@import './layout';
+
+@import './pages//home/';

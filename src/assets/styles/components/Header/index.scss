@@ -1,0 +1,15 @@
+.header {
+  background-color: #ff6961;
+  padding: .5em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  
+  .title{
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}

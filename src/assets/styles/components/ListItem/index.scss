@@ -1,0 +1,16 @@
+.listitem {
+  padding: 0.5em;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #ffc6ae;
+    cursor: pointer;
+  }
+  h4 {
+    margin: 0;
+  }
+  a {
+    text-decoration: inherit;
+    color: inherit;
+  }
+}
