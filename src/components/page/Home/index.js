@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import Header from 'components/global/Header'
 import ListItem  from 'components/global/ListItem'
 import Toast from 'components/global/Toast'
-import { useStore } from 'components/Home/store'
+import { useStore } from 'components/page/Home/store'
 
 export const Home = () => {
   const { fetchPokemon, pokemonList, url } = useStore(state => ({
@@ -13,11 +13,14 @@ export const Home = () => {
     fetchPokemon: state.fetchPokemon,
     url: state.url
   }))
-  const [ isOffline, setIsOffline ] = useState(false)
+  const [ isPopupActive, setIsPopupActive ] = useState(false)
 
   useEffect(() => {
     window.addEventListener('offline', () => {
-      setIsOffline(true)
+      setIsPopupActive(true)
+      setTimeout(() => {
+        setIsPopupActive(false)
+      }, 10000)
     })
 
   }, [])
@@ -28,13 +31,13 @@ export const Home = () => {
         <Header>
           Pokédex
         </Header>
-        <Toast active={isOffline}>
-          <div>
+        <Toast active={isPopupActive}>
+          <p>
             Anda terdeteksi offline
-            <Link to="/bookmark">
-              Load halaman bookmark
-            </Link>
-          </div>
+          </p>
+          <Link to="/bookmark">
+            Ke halaman bookmark
+          </Link>
         </Toast>
         <div className='content'>
           <InfiniteScroll

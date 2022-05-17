@@ -5,9 +5,11 @@ import { POKEMON_API_URL } from 'constants/url'
 import Header from 'components/global/Header'
 import Button from 'components/global/Button'
 import Card from 'components/global/Card'
+import Toast from 'components/global/Toast'
 
 export const Detail = () => {
-  const [ isOffline, setIsOffline ] = useState(false)
+  const [ isOfflineToastActive, setIsOfflineToastActive ] = useState(false)
+  const [ isBookmarkToastActive, setIsBookmarkToastActive ] = useState(false)
   const { pokemon } = useParams()
   const [ isLoading, setIsLoading ] = useState(true)
   const [ pokemonData, setPokemonData ] = useState({})
@@ -36,9 +38,12 @@ export const Detail = () => {
 
   useEffect(() => {
     window.addEventListener('offline', () => {
-      setIsOffline(true)
+      setIsOfflineToastActive(true)
+      setTimeout(() => {
+        setIsOfflineToastActive(false)
+      }, 10000)
     })
-  })
+  }, [])
 
   const addToBookmark = () => {
     //perlu cari cara supaya ga dobel2 itemnya
@@ -47,6 +52,10 @@ export const Detail = () => {
       name: pokemon
     })
     localStorage.setItem('bookmark', JSON.stringify(bookmarkedList))
+    setIsBookmarkToastActive(true)
+    setTimeout(() => {
+      setIsBookmarkToastActive(false)
+    }, 2000)
   }
 
   return (
@@ -55,15 +64,17 @@ export const Detail = () => {
         <Header>
           Pokédex
         </Header>
-        {
-          isOffline &&
-            <div>
-              Anda terdeteksi offline
-              <Link to="/bookmark">
-                Load halaman bookmark
-              </Link>
-            </div>
-        }
+        <Toast active={isBookmarkToastActive}>
+          Berhasil menambahkan ke dalam bookmark
+        </Toast>
+        <Toast active={isOfflineToastActive}>
+          <p>
+            Anda terdeteksi offline
+          </p>
+          <Link to="/bookmark">
+            Ke halaman bookmark
+          </Link>
+        </Toast>
         <div className='content'>
           {
             isLoading ? 

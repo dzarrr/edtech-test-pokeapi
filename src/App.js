@@ -5,9 +5,9 @@ import {
   Routes,
 } from 'react-router-dom'
 
-import { Home } from 'components/Home'
-import { Bookmark } from 'components/Bookmark'
-import { Detail } from 'components/Detail'
+import { Home } from 'components/page/Home'
+import { Bookmark } from 'components/page/Bookmark'
+import { Detail } from 'components/page/Detail'
 
 import 'assets/styles/main.scss'
 
