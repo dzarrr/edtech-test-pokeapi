@@ -1,6 +1,8 @@
 .listitem {
   transition: background-color 0.2s ease;
-
+  border-top: solid 1px #ffc6ae;
+  border-bottom: solid 1px #ffc6ae;
+  margin-bottom: .25em;
   &:hover {
     background-color: #ffc6ae;
     cursor: pointer;
