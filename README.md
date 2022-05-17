@@ -5,7 +5,7 @@ Simple online pokedex that uses API from https://pokeapi.co/
 ### local machine
 ```bash
 npm install
-npm run start
+npm start
 # web app will be deployed to http://localhost:3000/edtech-test-pokeapi/ 
 # don't forget the baseUrl~ 
 ```
