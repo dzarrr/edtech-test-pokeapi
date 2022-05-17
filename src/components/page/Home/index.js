@@ -50,7 +50,7 @@ export const Home = () => {
           >
             {
               pokemonList.map((pokemon, key) => (
-                <ListItem key={key}>
+                <ListItem key={`${key}-${pokemon.name}`}>
                   <Link to={`detail/${pokemon.name}`}>
                     <h4>
                     {pokemon.name}

@@ -1,6 +1,6 @@
-const ListItem = ({ key, children }) => {
+const ListItem = ({ children }) => {
   return (
-    <div key={key} className='listitem'>
+    <div className='listitem'>
       {children}
     </div>
   )

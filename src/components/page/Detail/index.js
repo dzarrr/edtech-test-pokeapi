@@ -86,15 +86,15 @@ export const Detail = () => {
                     <img src={pokemonData.sprites?.front_default} alt={`${pokemon} sprite`} />
                     <div className='type'>
                       {
-                        pokemonData.types.map(type => (
-                          <h4>{type.type.name}</h4>
+                        pokemonData.types.map((type, key) => (
+                          <h4 key={`${key}-${type.type.name}`}>{type.type.name}</h4>
                         ))
                       }
                     </div>
                     <div className='stats'>
                       {
-                        pokemonData.stats.map((stat, index) => (
-                          <div className='stats--item' key={index}>
+                        pokemonData.stats.map((stat, key) => (
+                          <div className='stats--item' key={`${key}-${stat}`}>
                             <p>{stat.stat.name}</p>
                             <p>{stat.base_stat}</p>
                           </div>
