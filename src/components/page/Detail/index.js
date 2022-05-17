@@ -10,6 +10,8 @@ import Toast from 'components/global/Toast'
 export const Detail = () => {
   const [ isOfflineToastActive, setIsOfflineToastActive ] = useState(false)
   const [ isBookmarkToastActive, setIsBookmarkToastActive ] = useState(false)
+  const [ isRemoveBookmarkToastActive, setIsRemoveBookmarkToastActive ] = useState(false)
+  const [ bookmarkedList, setBookmarkedList ] = useState([])
   const { pokemon } = useParams()
   const [ isLoading, setIsLoading ] = useState(true)
   const [ pokemonData, setPokemonData ] = useState({})
@@ -43,18 +45,35 @@ export const Detail = () => {
         setIsOfflineToastActive(false)
       }, 10000)
     })
+
+    const bookmarkLS = (localStorage.getItem('bookmark') === null) ? [] : JSON.parse(localStorage.getItem('bookmark'))
+    setBookmarkedList(bookmarkLS)
   }, [])
 
+  const isPokemonOnBookmark = (pokemon) => {
+    return (bookmarkedList.findIndex((item) => item.name === pokemon) !== -1)
+  }
+
   const addToBookmark = () => {
-    //perlu cari cara supaya ga dobel2 itemnya
-    let bookmarkedList = (localStorage.getItem('bookmark') === null) ? [] : JSON.parse(localStorage.getItem('bookmark'))
-    bookmarkedList.push({
+    let updatedList = bookmarkedList
+    updatedList.push({
       name: pokemon
     })
     localStorage.setItem('bookmark', JSON.stringify(bookmarkedList))
+    setBookmarkedList(updatedList)
     setIsBookmarkToastActive(true)
     setTimeout(() => {
       setIsBookmarkToastActive(false)
+    }, 2000)
+  }
+
+  const removeFromBookmark = (pokemon) => {
+    let updatedList = bookmarkedList.filter(item => item.name !== pokemon)
+    setBookmarkedList(updatedList)
+    localStorage.setItem('bookmark', JSON.stringify(updatedList))
+    setIsRemoveBookmarkToastActive(true)
+    setTimeout(() => {
+      setIsRemoveBookmarkToastActive(false)
     }, 2000)
   }
 
@@ -66,6 +85,9 @@ export const Detail = () => {
         </Header>
         <Toast active={isBookmarkToastActive}>
           Berhasil menambahkan ke dalam bookmark
+        </Toast>
+        <Toast active={isRemoveBookmarkToastActive}>
+          Berhasil menghapus item dari bookmark
         </Toast>
         <Toast active={isOfflineToastActive}>
           <p>
@@ -102,11 +124,22 @@ export const Detail = () => {
                       }
                     </div>
                   </Card>
-                  <Button 
-                    handleClick={addToBookmark}
-                    text={'Add to Bookmark'}
-                  >
-                  </Button>
+                  {
+                    !isPokemonOnBookmark(pokemon) ? 
+                    (
+                      <Button 
+                        handleClick={addToBookmark}
+                        text={'Add to Bookmark'}
+                      >
+                      </Button>
+                    ) : (
+                      <Button 
+                        handleClick={() => removeFromBookmark(pokemon)}
+                        text={'Remove from Bookmark'}
+                      >
+                      </Button>
+                    )
+                  }
                 </>
               )
           }
