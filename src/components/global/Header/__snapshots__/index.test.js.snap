@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders element correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="header"
+  >
+    <div
+      class="title"
+    >
+      <h1 />
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://dzarrr.github.io/edtech-test-pokeapi/",
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!**/node_modules/**"
+    ]
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
