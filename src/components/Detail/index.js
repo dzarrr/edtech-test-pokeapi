@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import { POKEMON_API_URL } from 'constants/url'
 import Header from 'components/global/Header'
 import Button from 'components/global/Button'
+import Card from 'components/global/Card'
 
 export const Detail = () => {
   const [ isOffline, setIsOffline ] = useState(false)
@@ -39,7 +40,7 @@ export const Detail = () => {
     })
   })
 
-  const handleClick = () => {
+  const addToBookmark = () => {
     //perlu cari cara supaya ga dobel2 itemnya
     let bookmarkedList = (localStorage.getItem('bookmark') === null) ? [] : JSON.parse(localStorage.getItem('bookmark'))
     bookmarkedList.push({
@@ -66,31 +67,36 @@ export const Detail = () => {
         <div className='content'>
           {
             isLoading ? 
-              <div className="loader" key={0}>Loading ...</div>
+              <div className='loader' key={0}>Loading ...</div>
               : (
-                <div className="card">
-                  <h2>{pokemon}</h2>
-                  <img src={pokemonData.sprites?.front_default} alt={`${pokemon} sprite`} />
-                  {
-                    pokemonData.types.map(type => (
-                      <h3>{type.type.name}</h3>
-                    ))
-                  }
-                  {
-                    pokemonData.stats.map(stat => (
-                      <>
-                        <h3>{stat.stat.name}</h3>
-                        <h3>{stat.base_stat}</h3>
-                      </>
-                    ))
-                  }
-
+                <>
+                  <Card className='card--pokemon'>
+                    <h2>{pokemon}</h2>
+                    <img src={pokemonData.sprites?.front_default} alt={`${pokemon} sprite`} />
+                    <div className='type'>
+                      {
+                        pokemonData.types.map(type => (
+                          <h4>{type.type.name}</h4>
+                        ))
+                      }
+                    </div>
+                    <div className='stats'>
+                      {
+                        pokemonData.stats.map((stat, index) => (
+                          <div className='stats--item' key={index}>
+                            <p>{stat.stat.name}</p>
+                            <p>{stat.base_stat}</p>
+                          </div>
+                        ))
+                      }
+                    </div>
+                  </Card>
                   <Button 
-                    handleClick={handleClick}
+                    handleClick={addToBookmark}
                     text={'Add to Bookmark'}
                   >
                   </Button>
-                </div>
+                </>
               )
           }
         </div>

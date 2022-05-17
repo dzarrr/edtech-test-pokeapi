@@ -1,5 +1,4 @@
 .listitem {
-  padding: 0.5em;
   transition: background-color 0.2s ease;
 
   &:hover {
@@ -10,6 +9,8 @@
     margin: 0;
   }
   a {
+    padding: 0.5em;
+    display: block;
     text-decoration: inherit;
     color: inherit;
   }

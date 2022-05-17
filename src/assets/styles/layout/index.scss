@@ -5,6 +5,7 @@ html {
   font-family: sans-serif;
   #root{
     background-color: $color-light-gray;
+    min-height: 100vh;
   }
   
   h1 {
