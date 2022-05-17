@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/edtech-test-pokeapi/static/css/main.6acbc7ea.css",
-    "main.js": "/edtech-test-pokeapi/static/js/main.506dc61f.js",
+    "main.css": "/edtech-test-pokeapi/static/css/main.8df571e1.css",
+    "main.js": "/edtech-test-pokeapi/static/js/main.03572533.js",
     "static/js/787.475e564d.chunk.js": "/edtech-test-pokeapi/static/js/787.475e564d.chunk.js",
     "service-worker.js": "/edtech-test-pokeapi/service-worker.js",
     "index.html": "/edtech-test-pokeapi/index.html",
-    "main.6acbc7ea.css.map": "/edtech-test-pokeapi/static/css/main.6acbc7ea.css.map",
-    "main.506dc61f.js.map": "/edtech-test-pokeapi/static/js/main.506dc61f.js.map",
+    "main.8df571e1.css.map": "/edtech-test-pokeapi/static/css/main.8df571e1.css.map",
+    "main.03572533.js.map": "/edtech-test-pokeapi/static/js/main.03572533.js.map",
     "787.475e564d.chunk.js.map": "/edtech-test-pokeapi/static/js/787.475e564d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6acbc7ea.css",
-    "static/js/main.506dc61f.js"
+    "static/css/main.8df571e1.css",
+    "static/js/main.03572533.js"
   ]
 }
