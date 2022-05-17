@@ -2,9 +2,9 @@ import create from 'zustand'
 
 import { POKEMON_API_URL } from 'constants/url'
 
-export const useStore = create((set, get) => ({
+export const useStore = create((set) => ({
   pokemonList: [],
-  url: `${POKEMON_API_URL}?limit=100&offset=1`,
+  url: `${POKEMON_API_URL}?limit=100&offset=0`,
   fetchPokemon: async(url) => {
     await fetch(url)
       .then(response => {
